@@ -6,6 +6,7 @@ This project is a set of my solutions of PAT problems, and all programs could pa
 ### Solved List:
 
 |Id|Title|Tips and Tricks|Type|  
+|----|---------------|----|-----------------|
 |1001|A+B Format (20)|[Hint](https://runningikkyu.github.io/1001.A+B-Format-(20)/)|String Handling|  
 |1002|A+B for Polynomials (25)|[Hint](https://runningikkyu.github.io/1002.-A+B-for-Polynomials-(25)/)|Addition of Array|
   
