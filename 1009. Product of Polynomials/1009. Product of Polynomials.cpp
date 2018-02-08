@@ -2,7 +2,7 @@
 #include <iomanip>
 #include <cmath>        // stuck here once.
 #include <algorithm>
-#define N 3015
+#define N 3015          // stuct here once.
 using namespace std;
 
 int main(void)
