@@ -14,3 +14,6 @@ This project is a set of my solutions of PAT problems, and all programs could pa
 |1005|Spell It Right (20)|[C++ Code](https://github.com/RunningIkkyu/PAT/blob/master/1005.%20Spell%20It%20Right/1005.Spell%20It%20Right.cpp)|[Hint](https://runningikkyu.github.io/1005.-Spell-It-Right/)|String Handling|  
 |1006|Sign In and Sign Out (25)|[C++ Code](https://github.com/RunningIkkyu/PAT/tree/master/1006.%20Sign%20In%20and%20Sign%20Out)|[Hint](https://runningikkyu.github.io/1006.-Sign-In-and-Sign-Out/)|Finding Element|   
 |1007|Maximum Subsequence (20)|[C++ Code](https://github.com/RunningIkkyu/PAT/tree/master/1007.%20Maximum%20Subsequence%20Sum)|[Hint](https://runningikkyu.github.io/1007.-Maximum-Subsequence-Sum/)|Subsequnce|   
+|1008|1008. Elevator (20)|[C++ Code](https://github.com/RunningIkkyu/PAT/blob/master/1008.%20Elevator/1008.Elevator.cpp)|[Hint](https://runningikkyu.github.io/1008.-Elevator-(20)/)|Simulation|   
+|1009||[C++ Code](https://github.com/RunningIkkyu/PAT/blob/master/1009.%20Product%20of%20Polynomials/1009.%20Product%20of%20Polynomials.cpp)|[Hint](https://runningikkyu.github.io/1009.-Product-of-Polynomials-(25)/)|Simulation|   
+|1010||[C++ Code](https://github.com/RunningIkkyu/PAT/blob/master/1010.%20Radix/1010.%20Radix.cpp)|[Hint](https://runningikkyu.github.io/1010.-Radix/)|Simulation|   
