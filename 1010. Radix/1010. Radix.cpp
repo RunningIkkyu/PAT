@@ -42,7 +42,7 @@ int main(void)
     // save the number which radix has been given.
     long long num = baseConversion(n[tag], radix, -1);
     int max_ind = 0;
-    // here , stuck once, write n[tag] instead of n[3-tag].Damn it!!!!.
+    // here stuck once, write n[tag] instead of n[3-tag].Damn it!!!!.
     for(int i = 0; i < n[3-tag].length(); i++)
         if(n[3-tag][i] > n[3-tag][max_ind])
             max_ind = i;
