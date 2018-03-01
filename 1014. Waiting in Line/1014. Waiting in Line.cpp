@@ -13,7 +13,7 @@ int main(void){
     // variable defination.
     int n, m, k, q, index = 1;
     cin>>n>>m>>k>>q;
-    
+
     vector<int> time(k+1), result(k+1);
     vector<node> window(n+1);
     // save the people cannot get servered before 5:00pm. 
@@ -50,8 +50,8 @@ int main(void){
             if(window[i].poptime < tempmin){
                 tempwindow = i;
                 tempmin = window[i].poptime;
-            }
-        }
+            }//if
+        }//for
         // pop the min people and push people from the waiting line.
         window[tempwindow].q.pop();
         window[tempwindow].q.push(time[index]);
@@ -76,8 +76,8 @@ int main(void){
             cout<<setfill('0')<<setw(2)<<(minute + 480) / 60;
             cout<<":";
             cout<<setfill('0')<<setw(2)<<(minute + 480) % 60<<endl;
-        }
-    }
+        }//else
+    }//for
 
     return 0;
-}
+}//main
