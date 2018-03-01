@@ -13,9 +13,11 @@ int main(void){
     // variable defination.
     int n, m, k, q, index = 1;
     cin>>n>>m>>k>>q;
+    
     vector<int> time(k+1), result(k+1);
-   
     vector<node> window(n+1);
+    // save the people cannot get servered before 5:00pm. 
+    // sorry[i] is true if we have to say sorry to the i-th people.
     vector<bool> sorry(k+1, false);
 
     // input
@@ -39,28 +41,32 @@ int main(void){
             }//if
         }//for
     }//for
-   //aaaaaaaaaaaaaaa
 
-    while(index <= k){
+    for(;index <= k; index++){
         int tempmin = window[1].poptime;
         int tempwindow = 1;
-        // find first pop queue.
+        // find the front people in all queue with the minimum serving time.
         for(int i = 2; i <= n; i++){
             if(window[i].poptime < tempmin){
                 tempwindow = i;
                 tempmin = window[i].poptime;
             }
         }
+        // pop the min people and push people from the waiting line.
         window[tempwindow].q.pop();
         window[tempwindow].q.push(time[index]);
+        // update the poptime of this window.
         window[tempwindow].poptime += window[tempwindow].q.front();
+        // if the new coming can not get his serve before 5:00pm.
         if(window[tempwindow].endtime >= 540)
             sorry[index] = true;
+        // update endtime of the window.
         window[tempwindow].endtime += time[index];
+        // save his finished time.
         result[index] = window[tempwindow].endtime;
-        index++;
     }
 
+    // input query and output result.
     for(int i = 1; i <= q; i++){
         int query, minute;
         cin>>query;
