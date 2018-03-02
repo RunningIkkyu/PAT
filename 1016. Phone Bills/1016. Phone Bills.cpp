@@ -36,6 +36,7 @@ long acmlt(record x){
     return res;
 }
 
+// print time in the given formating.
 void show_time(record x){
     cout<<setw(2)<<setfill('0')<<x.dd<<":";
     cout<<setw(2)<<setfill('0')<<x.hh<<":";
@@ -59,6 +60,8 @@ int main(void)
     double total = 0.0, cost = 0.0;
     int cnt = 0;
     string prename = "";
+    // find all nearbor pairs. the first vector saves online record.
+    // and the second vector saves offline record.
     for(int i = 1; i < n; i++){
         // if get paired.
         if(records[i].name == records[i-1].name && records[i].flag == "off-line" 
