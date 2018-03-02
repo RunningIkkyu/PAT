@@ -2,6 +2,7 @@
 #include <cmath>
 using namespace std;
 
+// check if num is prime number.
 bool isPrime(int num){
     int sqr = int(sqrt(num * 1.0));
     for(int i = 2; i <= sqr; i++){
