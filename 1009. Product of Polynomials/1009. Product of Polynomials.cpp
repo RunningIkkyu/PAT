@@ -26,7 +26,7 @@ int main(void)
         // stuck here once.
         for(int i = 0; i < N; i++)
             // coefficients_2 save the result.
-            if(coefficients_1[i] > 1e-6)
+            if(abs(coefficients_1[i]) > 1e-6)
                 coefficients_2[ex+i] += co * coefficients_1[i];
     }
 
