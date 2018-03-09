@@ -13,6 +13,7 @@ int digit(char a){
         return int(a)-'a' + 10;
     else if ( a >= 'A' && a <= 'Z')
         return int(a)-'A' + 10;
+    return -1;
 }
 
 long long baseConversion(string num, long long radix, long long cmpnum)
