@@ -22,6 +22,10 @@ int main(void)
         cin>>c1>>c2;
         city[c1][c2] = city[c2][c1] = 1;
     }
+    if(n == 1 && m == 0) {
+        cout<<0<<endl;
+        return 0;
+    }
     for(int j = 0; j < k; j++){
         fill(visited, visited+N, 0);
         cin>>x;

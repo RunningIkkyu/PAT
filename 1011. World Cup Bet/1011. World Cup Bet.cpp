@@ -27,6 +27,6 @@ int main(void)
         // calculate the production of all selected odds.
         production *= odds[i][max];
     }
-    cout<<" "<<setiosflags(ios::fixed)<<setprecision(2)<<(production*0.65-1)*2<<endl;
+    cout<<" "<<setiosflags(ios::fixed)<<setprecision(2)<<(production*0.65-1)*2.0 + 0.001<<endl;
     return 0;
 }
