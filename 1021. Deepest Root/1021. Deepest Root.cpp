@@ -1,47 +1,59 @@
 #include <cstdio>
+#include <vector>
+#include <set>
 #include <algorithm>
-#define N 10010
 using namespace std;
-
-int v[N][N], n, a, b, components = 0, depth[N], maxdepth = 0;
-bool visited[N];
-
-void dfs(int s, int index, int d){
-    visited[index] = true;
-    if(d > depth[s]) depth[s] = d;
-    for(int j = 1; j <= n; j++)
-        if(v[index][j] == 1 && visited[j] == false) dfs(s, j, d+1);
-}
-
-int main(void)
-{
-    fill(v[0], v[0] + N * N, 0);
-    scanf("%d", &n);
-    for(int i = 0; i < n-1; i++){
-        scanf("%d%d", &a, &b);
-        v[a][b] = v[b][a] = 1;
+int n, maxheight = 0;
+vector<vector<int>> v;
+bool visit[10010];
+set<int> s;
+vector<int> temp;
+void dfs(int node, int height) {
+    if(height > maxheight) {
+        temp.clear();
+        temp.push_back(node);
+        maxheight = height;
+    } else if(height == maxheight){
+        temp.push_back(node);
     }
-    for(int i = 1; i <= n; i++){
-        if(visited[i] == false){
-            dfs(i, i, 1);
-            components++;
+    visit[node] = true;
+    for(int i = 0; i < v[node].size(); i++) {
+        if(visit[v[node][i]] == false)
+            dfs(v[node][i], height + 1);
+    }
+}
+int main() {
+    scanf("%d", &n);
+    v.resize(n + 1);
+    int a, b, cnt = 0, s1 = 0;
+    for(int i = 0; i < n - 1; i++) {
+        scanf("%d%d", &a, &b);
+        v[a].push_back(b);
+        v[b].push_back(a);
+    }
+    for(int i = 1; i <= n; i++) {
+        if(visit[i] == false) {
+            dfs(i, 1);
+            if(i == 1) {
+                for(int j = 0; j < temp.size(); j++) {
+                    s.insert(temp[j]);
+                    if(j == 0) s1 = temp[j];
+                }
+            }
+            cnt++;
         }
     }
-    if(components > 1){
-        printf("Error: %d components", components);
-        return 0;
-    }
-    fill(depth, depth+N, 0);
-    for(int i = 1; i <= n; i++){
-        fill(visited, visited + N, 0);
-        dfs(i, i, 1);
-    }
-    for(int i = 1; i <= n; i++){
-        if(maxdepth < depth[i]) maxdepth = depth[i];
-        maxdepth = max(maxdepth, depth[i]);
-    }
-    for(int i = 1; i <= n; i++){
-        if(depth[i] == maxdepth) printf("%d\n", i);
+    if(cnt >= 2) {
+        printf("Error: %d components", cnt);
+    } else {
+        temp.clear();
+        maxheight = 0;
+        fill(visit, visit + 10010, false);
+        dfs(s1, 1);
+        for(int i = 0; i < temp.size(); i++)
+            s.insert(temp[i]);
+        for(auto it = s.begin(); it != s.end(); it++)
+            printf("%d\n", *it);
     }
     return 0;
 }
