@@ -1,7 +1,7 @@
 #include<iostream>
+#include <algorithm>
 #include <queue>
 #include <vector>
-#include <stack>
 #define N 40
 using namespace std;
 
@@ -12,8 +12,8 @@ struct node {
 };
 
 queue<node * > q;
-stack<node * > stk;
 vector<node * > v;
+vector <node *> level[30];
 
 node *ipcreate(int *in, int *post, int len){
 	if(len == 0) return NULL;
@@ -28,34 +28,28 @@ node *ipcreate(int *in, int *post, int len){
 }
 
 
-void sblevelorder(node *root){
+void getlevelorder(node *root){
 	if(root == NULL) return;
-	bool flag = true;
 	node *sp = NULL;
 	q.push(root);
 	q.push(sp);
-	while(q.size() != 1){
+	int ind = 0;
+	while(q.size() > 1){
 		node *x = q.front();
+		q.pop();
 		if(x == NULL){
-			q.pop();
-			flag = !flag;
-			while(stk.size() > 0){
-				v.push_back(stk.top());
-				stk.pop();
-			}
+			ind++;
 			q.push(sp);
 			continue;
 		}
-		if(flag == true){
-			stk.push(x);
-		}else{
-			v.push_back(x);
+		else{
+			level[ind].push_back(x);
 		}
-		q.pop();
 		if(x->l) q.push(x->l);
 		if(x->r) q.push(x->r);
 	}
 }
+
 
 int main(void){
 	int n;
@@ -64,11 +58,17 @@ int main(void){
 	for(int i = 0; i < n; i++) cin>>in[i];
 	for(int i = 0; i < n; i++) cin>>post[i];
 	node *root = ipcreate(in, post, n);
-	sblevelorder(root);
-
-	for(int i = 0 ; i < v.size(); i++) {
-		if(i != 0) cout<<" ";
-		cout<<v[i]->v;
-	} cout<<endl;
+	getlevelorder(root);
+	bool flag = false;
+	for(int i = 0; i < 30; i++){
+		if(level[i].size() == 0) break;
+		if(i%2 == 0)
+			reverse(level[i].begin(), level[i].end());
+		for(int j = 0; j < level[i].size(); j++){
+			if(flag == true) cout<<" ";
+			cout<<level[i][j]->v;
+			flag = true;
+		}
+	}
 	return 0;
 }
